@@ -1,10 +1,16 @@
-const express = require("express")
+const express = require("express");
+const { options } = require("mongoose");
 const mongoose = require("mongoose")
 const app = express();
 
 const employeeController = require("./controllers/EmployeeController")
 
-mongoose.connect("mongodb://localhost:27017/testdb", () => {console.log("Connected")},  (e) => {console.error(e)});
+mongoose.connect("mongodb://localhost:27017/testdb", 
+    {
+        useNewUrlParser: true,
+        useUnifiedTopology: true
+    }
+);
 
 app.use(logger)
 

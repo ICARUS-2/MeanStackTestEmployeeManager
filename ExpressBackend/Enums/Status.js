@@ -3,3 +3,5 @@ const STATUSES = [
     "On Leave",
     "Terminated"
 ]
+
+module.exports = STATUSES;
