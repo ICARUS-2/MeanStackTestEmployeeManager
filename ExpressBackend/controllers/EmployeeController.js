@@ -213,4 +213,53 @@ router.post('/:id/delete', async (req, res) =>
     }
 })
 
+//Terminate employee
+router.post('/:id/terminate', async (req, res) =>
+{
+    let id = req.params.id.toString();
+
+    let emp;
+
+    //First try to find the employee
+    try
+    {
+        emp = await EmployeeModel.find().where({"_id": id})
+
+        if (emp.length != 1)
+        {
+            res.statusCode = 404
+            res.send("No employee with ID "+id+ " exists")
+            return;
+        }
+    }
+    catch(err)
+    {
+        res.statusCode = 404
+        res.send("No employee with ID "+id+ " exists")
+        return;
+    }
+
+    //Then update it once its existence is confirmed
+    try
+    {
+        let status = "Terminated";
+        let info = "Terminated: "+req.body.reason;
+
+        emp[0].status = status;
+        emp[0].info = info;
+
+        await emp[0].save();
+
+        res.statusCode = 201
+        res.send("Employee " + id + " successfully terminated")
+        return;
+    }
+    catch(err)
+    {
+        res.statusCode = 400;
+        res.send(err.message)
+    }
+})
+
+
 module.exports = router;
