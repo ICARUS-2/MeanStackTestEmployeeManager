@@ -73,6 +73,43 @@ router.post('/new', async (req, res) =>
     }
 })
 
+//Create a new employee
+router.post('/testnew', async (req, res) =>
+{
+    console.log(req.body)
+
+    let name = "TEST EMPLOYEE";
+    let dob = "2000-1-1";
+    let email = "TEST EMAIL";
+    let hiringDate = "2000-1-1";
+    let terminationDate = "2000-1-1";
+    let status = "Active";
+    let info = "TEST INFO";
+
+    try
+    {
+        
+        let employee = await EmployeeModel.create({
+            name: name,
+            dateOfBirth: dob,
+            email: email,
+            hiringDate: hiringDate,
+            terminationDate: terminationDate,
+            status: status,
+            info: info
+        })
+
+        employee.save()
+        res.statusCode = 201;
+        res.send("Employee successfully created")
+    }
+    catch(err)
+    {
+        res.statusCode = 400;
+        res.send(err)
+    }
+})
+
 //Update existing employee
 router.post('/:id/edit', async (req, res) =>
 {
@@ -133,9 +170,32 @@ router.post('/:id/edit', async (req, res) =>
 })
 
 //Remove employee
-router.post('/delete', async (req, res) =>
+router.post('/:id/delete', async (req, res) =>
 {
-    //TODO
+    let id = req.params.id.toString();
+
+    try
+    {
+        //Will be the employee that is deleted if deletion succeeds, retu
+        let delResult = await EmployeeModel.findOneAndDelete().where({"_id": id})
+    
+        if (delResult != null)
+        {
+            res.statusCode = 200;
+            res.send("Employee successfully deleted")
+        }
+        else
+        {
+            res.statusCode = 404;
+            res.send("No employee with ID "+id+ " exists")
+        }
+    }
+    catch(err)
+    {
+        res.statusCode = 404
+        res.send("No employee with ID "+id+ " exists")
+        return;
+    }
 })
 
 module.exports = router;
