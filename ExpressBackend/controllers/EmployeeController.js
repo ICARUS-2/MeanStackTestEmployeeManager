@@ -5,11 +5,21 @@ const EmployeeModel = require("../models/EmployeeModel")
 //Retrieve list of employees
 router.get('/', async (req, res) =>
 {
-    let employees = await EmployeeModel.find();
+    try
+    {
+        let employees = await EmployeeModel.find();
 
-    res.send(employees)
+        res.statusCode = 200
+        res.send(employees)
+    }
+    catch(err)
+    {
+        res.statusCode = 500
+        res.send("Failed to retrieve Employees")
+    }
 })
 
+//Retrieves an employee by its ID
 router.get('/:id', async (req, res) =>
 {
     let id = req.params.id.toString();
@@ -31,8 +41,14 @@ router.get('/:id', async (req, res) =>
     }
     catch(err)
     {
-        res.statusCode = 404
-        res.send("No employee with ID "+id+ " exists")
+        if (err.message.includes("Cast to"))
+        {
+            res.statusCode = 404
+            res.send("No employee with ID "+id+ " exists")
+        }
+
+        res.statusCode = 500
+        res.send("Failed to retrieve Employee")
     }
 })
 
@@ -155,17 +171,16 @@ router.post('/:id/edit', async (req, res) =>
         emp[0].status = status;
         emp[0].info = info;
 
-        emp[0].save();
+        await emp[0].save();
+
         res.statusCode = 201
         res.send("Employee " + id + " successfully edited")
         return;
     }
     catch(err)
     {
-        console.log(err)
-        res.statusCode = 400
-        res.send(err);
-        return;
+        res.statusCode = 400;
+        res.send(err.message)
     }
 })
 
