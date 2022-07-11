@@ -3,7 +3,7 @@
 
     <div>
         <a class="btn btn-primary" (click)="handleCreateTestEmployee()">Create test employee</a>
-        <a class="btn btn-success" style="margin-left: 10px;">Create employee</a>
+        <a class="btn btn-success" routerLink="new" style="margin-left: 10px;">Create employee</a>
     </div>
 
     <table class="table table-striped">
@@ -11,8 +11,9 @@
           <tr>
             <th scope="col">Employee ID</th>
             <th scope="col">Name</th>
-            <th scope="col">Date of Birth</th>
             <th scope="col">E-Mail</th>
+            <th scope="col">Department</th>
+            <th scope="col">Date of Birth</th>
             <th scope="col">Hired</th>
             <th scope="col">Terminated</th>
             <th scope="col">Status</th>
@@ -24,8 +25,9 @@
           <tr *ngFor="let empl of this.employees">
             <th scope="row">{{empl._id}}</th>
             <td>{{empl.name}}</td>
-            <td>{{dateFormatter.getFormat(empl.dateOfBirth)}}</td>
             <td>{{empl.email}}</td>
+            <td>{{empl.department}}</td>
+            <td>{{dateFormatter.getFormat(empl.dateOfBirth)}}</td>
             <td>{{dateFormatter.getFormat(empl.hiringDate)}}</td>
             <td>{{dateFormatter.getFormat(empl.terminationDate)}}</td>
             <td>{{empl.status}}</td>
