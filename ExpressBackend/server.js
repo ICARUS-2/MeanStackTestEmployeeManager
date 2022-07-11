@@ -1,7 +1,12 @@
+const cors = require('cors')
 const express = require("express");
 const { options } = require("mongoose");
 const mongoose = require("mongoose")
 const app = express();
+
+app.use(cors({
+    origin: '*'
+}));
 
 const employeeController = require("./controllers/EmployeeController")
 

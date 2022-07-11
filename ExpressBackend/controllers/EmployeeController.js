@@ -32,11 +32,13 @@ router.get('/:id', async (req, res) =>
         {
             res.statusCode = 200
             res.send(emp[0])
+            return;
         }
         else
         {
             res.statusCode = 404
             res.send("No employee with ID "+id+ " exists")
+            return;
         }
     }
     catch(err)
@@ -45,10 +47,12 @@ router.get('/:id', async (req, res) =>
         {
             res.statusCode = 404
             res.send("No employee with ID "+id+ " exists")
+            return;
         }
 
         res.statusCode = 500
         res.send("Failed to retrieve Employee")
+        return;
     }
 })
 
@@ -98,7 +102,7 @@ router.post('/testnew', async (req, res) =>
     let dob = "2000-1-1";
     let email = "TEST EMAIL";
     let hiringDate = "2000-1-1";
-    let terminationDate = "2000-1-1";
+    let terminationDate = null;
     let status = "Active";
     let info = "TEST INFO";
 
@@ -114,7 +118,7 @@ router.post('/testnew', async (req, res) =>
             status: status,
             info: info
         })
-
+        
         employee.save()
         res.statusCode = 201;
         res.send("Employee successfully created")

@@ -1,0 +1,38 @@
+<div class="container">
+    <div class="m-5"></div>
+
+    <div>
+        <a class="btn btn-primary" (click)="handleCreateTestEmployee()">Create test employee</a>
+        <a class="btn btn-success" style="margin-left: 10px;">Create employee</a>
+    </div>
+
+    <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Employee ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Date of Birth</th>
+            <th scope="col">E-Mail</th>
+            <th scope="col">Hired</th>
+            <th scope="col">Terminated</th>
+            <th scope="col">Status</th>
+            <th scope="col">Info</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let empl of this.employees">
+            <th scope="row">{{empl._id}}</th>
+            <td>{{empl.name}}</td>
+            <td>{{dateFormatter.getFormat(empl.dateOfBirth)}}</td>
+            <td>{{empl.email}}</td>
+            <td>{{dateFormatter.getFormat(empl.hiringDate)}}</td>
+            <td>{{dateFormatter.getFormat(empl.terminationDate)}}</td>
+            <td>{{empl.status}}</td>
+            <td>{{empl.info}}</td>
+            <td *ngIf="empl.status != 'Terminated'; else elseTerminated">Terminate</td>
+            <ng-template #elseTerminated><td>-</td></ng-template>
+          </tr>
+        </tbody>
+      </table>
+</div>
