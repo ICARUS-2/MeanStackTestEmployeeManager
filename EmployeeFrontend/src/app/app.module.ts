@@ -8,6 +8,9 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CreateEmployeeComponent } from './create-employee/create-employee.component';
 import { EmployeeFormComponent } from './employee-form/employee-form.component';
+import { FormsModule } from '@angular/forms';
+import { NotificationsComponent } from './notifications/notifications.component';
+import { NotificationService } from './services/notification.service';
 
 @NgModule({
   declarations: [
@@ -15,14 +18,18 @@ import { EmployeeFormComponent } from './employee-form/employee-form.component';
     EmployeesListComponent,
     NavbarComponent,
     CreateEmployeeComponent,
-    EmployeeFormComponent
+    EmployeeFormComponent,
+    NotificationsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [
+    NotificationService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

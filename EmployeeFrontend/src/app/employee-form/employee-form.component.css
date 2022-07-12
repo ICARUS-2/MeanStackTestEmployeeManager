@@ -1,0 +1,9 @@
+input, select
+{
+    max-width: 400px;
+}
+
+label
+{
+    margin-top: 15px;
+}

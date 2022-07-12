@@ -1,5 +1,8 @@
 <div class="container">
     <div class="m-5"></div>
     <h2>New Employee</h2>
-    <app-employee-form></app-employee-form>
+    <div class="d-flex">
+        <app-employee-form style="width: 500px;" [submitFunction]="onSubmitForm" [employeeModel]="employeeModel"></app-employee-form>
+        <app-notifications></app-notifications>
+    </div>
 </div>

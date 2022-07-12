@@ -1,0 +1,3 @@
+<div class="alert" [ngClass]="notif.type" *ngFor="let notif of notificationService.notifications">
+    {{notif.message}}
+</div>

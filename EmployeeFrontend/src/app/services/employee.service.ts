@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import EmployeeModel from 'src/models/EmployeeModel';
@@ -14,6 +14,11 @@ export class EmployeeService {
     
   }
 
+  getStatuses() : Observable<String[]>
+  {
+    return this.http.get<String[]>(this.URL + "statuses")
+  }
+
   getEmployees() : Observable<EmployeeModel[]>
   {
     return this.http.get<EmployeeModel[]>(this.URL);
@@ -24,9 +29,20 @@ export class EmployeeService {
     return this.http.get<EmployeeModel>(this.URL+id)
   }
 
-  createEmployee()
+  createEmployee(employee: EmployeeModel) : Observable<HttpResponse<EmployeeModel>>
   {
-
+    return this.http.post<EmployeeModel>(this.URL+"new", 
+    { 
+      name: employee.name,
+      dateOfBirth: employee.dateOfBirth,
+      email: employee.email,
+      department: employee.department,
+      hiringDate: employee.hiringDate,
+      terminationDate: employee.terminationDate,
+      status: employee.status,
+      info: employee.info
+    },
+    {observe: 'response', responseType: 'text' as 'json'})
   }
 
   createTestEmployee()
