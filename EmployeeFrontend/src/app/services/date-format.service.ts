@@ -11,8 +11,10 @@ export class DateFormatService {
     getFormat(d: Date | null = null) {
         if (d == null)
           return "-"
+
+
         var month = '' + (d.getMonth() + 1),
-        day = '' + d.getDate(),
+        day = '' + (d.getDate()),
         year = d.getFullYear();
 
     if (month.length < 2) 

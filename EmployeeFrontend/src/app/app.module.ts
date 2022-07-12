@@ -13,6 +13,7 @@ import { NotificationsComponent } from './notifications/notifications.component'
 import { NotificationService } from './services/notification.service';
 import { DeleteEmployeeComponent } from './delete-employee/delete-employee.component';
 import { EditEmployeeComponent } from './edit-employee/edit-employee.component';
+import { TerminateFormComponent } from './terminate-form/terminate-form.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { EditEmployeeComponent } from './edit-employee/edit-employee.component';
     EmployeeFormComponent,
     NotificationsComponent,
     DeleteEmployeeComponent,
-    EditEmployeeComponent
+    EditEmployeeComponent,
+    TerminateFormComponent
   ],
   imports: [
     BrowserModule,

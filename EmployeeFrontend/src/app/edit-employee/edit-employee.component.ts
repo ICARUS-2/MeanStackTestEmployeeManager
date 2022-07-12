@@ -53,6 +53,18 @@ export class EditEmployeeComponent implements OnInit {
     if (!this.employeeValidatorService.validate(this.employeeModel))
       return;
 
+    if (this.employeeModel.status == "Terminated")
+    {
+      if(this.employeeModel.terminationDate == null)
+      {
+        this.employeeModel.terminationDate = new Date();
+      }
+    }
+    else
+    {
+      this.employeeModel.terminationDate = null
+    }
+
     this.employeeService.editEmployee(this.employeeModel).subscribe( (e) =>
     {
       if(e.status == 200)

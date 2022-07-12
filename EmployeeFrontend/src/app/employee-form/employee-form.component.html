@@ -12,10 +12,10 @@
     <input id="departmentInput" type="text" name="department" placeholder="Department" [(ngModel)]="employeeModel.department">
     
     <label for="dobInput">Date of birth</label>
-    <input id="dobInput" type="date" name="dateOfBirth" placeholder="Date of birth" [(ngModel)]="employeeModel.dateOfBirth">
+    <input id="dobInput" type="date" name="dateOfBirth" placeholder="Date of birth" (ngModelChange)="employeeModel.dateOfBirth = $event" [ngModel]="employeeModel.dateOfBirth | date: 'yyyy-MM-dd'">
     
     <label for="hiringDateInput">Hiring Date</label>
-    <input id="hiringDateInput" type="date" name="hiringDate" placeholder="Hiring date" [(ngModel)]="employeeModel.hiringDate">
+    <input id="hiringDateInput" type="date" name="hiringDate" placeholder="Hiring date" (ngModelChange)="employeeModel.hiringDate = $event" [ngModel]="employeeModel.hiringDate| date: 'yyyy-MM-dd'">
     
     <label for="statusInput">Status</label>
     <select id="statusInput" name="status" [(ngModel)]="employeeModel.status">

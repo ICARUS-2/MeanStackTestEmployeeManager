@@ -34,6 +34,9 @@ export class CreateEmployeeComponent implements OnInit {
     if (!this.employeeValidatorService.validate(this.employeeModel))
       return;
 
+    if (this.employeeModel.status == "Terminated")
+      this.employeeModel.terminationDate = new Date();
+
     this.employeeService.createEmployee(this.employeeModel).subscribe( (e) =>
     {
       if(e.status == 201)
