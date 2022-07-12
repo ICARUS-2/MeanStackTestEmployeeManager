@@ -21,5 +21,13 @@ export class DateFormatService {
         day = '0' + day;
 
     return [year, month, day].join('-');
-}
+  }
+
+  getFormatFromString(d:string | null | Date)
+  {
+    if (d == null)
+      return "-"
+
+    return this.getFormat(new Date(d))
+  }
 }

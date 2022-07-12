@@ -3,6 +3,26 @@
 
     <a routerLink="/" class="btn btn-primary">Return</a>
 
-    
+    <div class="m-3"></div>
+
+    <h2>Delete employee {{employeeModel.name}}</h2>
+
+    <div class="m-4"></div>
+
+    <h4>ID: {{employeeModel._id}}</h4>
+    <h4>Salary: ${{employeeModel.salary}}</h4>
+    <h4>Email: {{employeeModel.email}}</h4>
+    <h4>Department: {{employeeModel.department}}</h4>
+    <h4>Date of Birth: {{dateFormatService.getFormatFromString(employeeModel.dateOfBirth)}}</h4>
+    <h4>Hiring Date: {{dateFormatService.getFormatFromString(employeeModel.hiringDate)}}</h4>
+    <h4>Termination Date: {{dateFormatService.getFormatFromString(employeeModel.terminationDate)}}</h4>
+    <h4>Status: {{employeeModel.status}}</h4>
+    <h4>Info: {{employeeModel.info}}</h4>
+
+    <div class="m-5"></div>
+
+    <h2>Are you sure?</h2>
+
+    <button class="btn btn-danger" (click)="onDeletePressed()">Confirm</button>
 </div>
 
