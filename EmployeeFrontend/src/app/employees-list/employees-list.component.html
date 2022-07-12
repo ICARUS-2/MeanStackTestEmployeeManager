@@ -1,6 +1,6 @@
 <div class="container">
     <div class="m-5"></div>
-
+    <!--TODO: Have a notification service display all notifications for CRUD operations-->
     <div>
         <a class="btn btn-primary" (click)="handleCreateTestEmployee()">Create test employee</a>
         <a class="btn btn-success" routerLink="new" style="margin-left: 10px;">Create employee</a>
@@ -9,9 +9,11 @@
     <table class="table table-striped">
         <thead>
           <tr>
+            <th>Action</th>
             <th scope="col">Employee ID</th>
             <th scope="col">Name</th>
             <th scope="col">E-Mail</th>
+            <th scope="col">Salary</th>
             <th scope="col">Department</th>
             <th scope="col">Date of Birth</th>
             <th scope="col">Hired</th>
@@ -23,9 +25,20 @@
         </thead>
         <tbody>
           <tr *ngFor="let empl of this.employees">
+            <td>
+              <div class="d-flex">
+                <a>
+                  <img src="../../assets/img/edit.png" width="30">
+                </a>
+                <a>
+                  <img src="../../assets/img/delete.png" width="30">
+                </a>
+              </div>
+            </td>
             <th scope="row">{{empl._id}}</th>
             <td>{{empl.name}}</td>
             <td>{{empl.email}}</td>
+            <td>{{empl.salary}}</td>
             <td>{{empl.department}}</td>
             <td>{{dateFormatter.getFormat(empl.dateOfBirth)}}</td>
             <td>{{dateFormatter.getFormat(empl.hiringDate)}}</td>

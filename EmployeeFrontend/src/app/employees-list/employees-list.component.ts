@@ -43,7 +43,7 @@ export class EmployeesListComponent implements OnInit, OnDestroy {
   {
     this.employeeSubscription = this.employeeService.getEmployees().subscribe( entries =>
       {
-        this.employees = entries.map( e => new EmployeeModel(e._id, e.name, e.email, e.department ,e.dateOfBirth, e.hiringDate, e.terminationDate, e.status, e.info) )
+        this.employees = entries.map( e => new EmployeeModel(e._id, e.name, e.email, e.salary ,e.department ,e.dateOfBirth, e.hiringDate, e.terminationDate, e.status, e.info) )
       })
   }
 }

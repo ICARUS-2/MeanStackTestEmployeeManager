@@ -1,0 +1,11 @@
+<form class="d-flex flex-column">
+    <input type="text" name="name" placeholder="Name">
+    <input type="text" name="email" placeholder="Email">
+    <input type="number" name="salary" placeholder="Salary" min="0" oninput="this.value = !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null">
+    <input type="text" name="department" placeholder="Department">
+    <input type="date" name="dateOfBirth" placeholder="Date of birth">
+    <input type="date" name="hiringDate" placeholder="Hiring date">
+    <select>
+    </select>
+    <input type="text" name="info" placeholder="Info">
+</form>
