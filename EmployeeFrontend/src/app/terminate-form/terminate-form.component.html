@@ -1,1 +1,2 @@
-<p>terminate-form works!</p>
+<input type="text" [(ngModel)]="reason" placeholder="Reason">
+<button (click)="onSubmit()" [ngClass]="{'btn-primary': submitButtonActive(), 'btn-secondary': !submitButtonActive()}" class="btn btn-sm" style="margin-top: 2px;" [disabled]="!submitButtonActive()">Terminate Employee</button>

@@ -73,8 +73,8 @@ export class EmployeeService {
     return this.http.post<EmployeeModel>(this.URL+id+"/delete", {}, {observe: 'response', responseType: 'text' as 'json'})
   }
 
-  terminateEmployee()
+  terminateEmployee(id: string, reason: string): Observable<HttpResponse<EmployeeModel>>
   {
-
+    return this.http.post<EmployeeModel>(this.URL+id+"/terminate", {reason: reason}, {observe: 'response', responseType: 'text' as 'json'})
   }
 }
