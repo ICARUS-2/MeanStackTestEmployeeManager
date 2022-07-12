@@ -26,10 +26,10 @@ export class EmployeeValidatorService {
       this.notificationService.addNotification(new NotificationModel(NotificationModel.TYPES.failure, "Department is required"))
       errorCount++;
     }
-
-    if (employee.salary < 0 )
+    
+    if (employee.salary == null || employee.salary < 0)
     {
-      this.notificationService.addNotification(new NotificationModel(NotificationModel.TYPES.failure, "Salary cannot be negative"))
+      this.notificationService.addNotification(new NotificationModel(NotificationModel.TYPES.failure, "Salary must be a positive number"))
       errorCount++;
     }
 

@@ -30,10 +30,20 @@ export class EditEmployeeComponent implements OnInit {
       this.employeeId = p["id"]
     })
 
-    this.employeeService.getEmployeeById(this.employeeId).subscribe( (e)=>
-    {
-      this.employeeModel = e;
-    } )
+
+      this.employeeService.getEmployeeById(this.employeeId).subscribe( 
+        {
+          next: (e)=>
+          {
+            this.employeeModel = e;
+          },
+          error: (err) =>
+          {
+            console.log(err)
+            this.notificationService.addPendingNotification(new NotificationModel(NotificationModel.TYPES.warning, "No employee with ID "+this.employeeId+" found"))
+            this.router.navigate(['/'])
+          }
+        })
   }
 
   onSubmitForm()

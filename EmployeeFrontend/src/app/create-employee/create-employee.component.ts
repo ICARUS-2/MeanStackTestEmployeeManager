@@ -29,7 +29,6 @@ export class CreateEmployeeComponent implements OnInit {
 
   onSubmitForm()
   {
-    console.log(this.employeeModel)
     this.notificationService.clearAllNotifications();
 
     if (!this.employeeValidatorService.validate(this.employeeModel))
