@@ -36,6 +36,7 @@ export class EmployeeService {
       name: employee.name,
       dateOfBirth: employee.dateOfBirth,
       email: employee.email,
+      salary: employee.salary,
       department: employee.department,
       hiringDate: employee.hiringDate,
       terminationDate: employee.terminationDate,
@@ -50,10 +51,21 @@ export class EmployeeService {
     return this.http.post<EmployeeModel>(this.URL+"testnew", {}, {responseType:'text' as 'json'} )
   }
 
-  editEmployee()
+  editEmployee(employee: EmployeeModel)
   {
-
-    //Return getEmployees()
+    return this.http.post<EmployeeModel>(this.URL+employee._id+"/edit", 
+    { 
+      name: employee.name,
+      dateOfBirth: employee.dateOfBirth,
+      email: employee.email,
+      salary: employee.salary,
+      department: employee.department,
+      hiringDate: employee.hiringDate,
+      terminationDate: employee.terminationDate,
+      status: employee.status,
+      info: employee.info
+    },
+    {observe: 'response', responseType: 'text' as 'json'})
   }
 
   deleteEmployee()

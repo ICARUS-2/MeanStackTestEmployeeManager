@@ -11,6 +11,8 @@ import { EmployeeFormComponent } from './employee-form/employee-form.component';
 import { FormsModule } from '@angular/forms';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { NotificationService } from './services/notification.service';
+import { DeleteEmployeeComponent } from './delete-employee/delete-employee.component';
+import { EditEmployeeComponent } from './edit-employee/edit-employee.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { NotificationService } from './services/notification.service';
     NavbarComponent,
     CreateEmployeeComponent,
     EmployeeFormComponent,
-    NotificationsComponent
+    NotificationsComponent,
+    DeleteEmployeeComponent,
+    EditEmployeeComponent
   ],
   imports: [
     BrowserModule,

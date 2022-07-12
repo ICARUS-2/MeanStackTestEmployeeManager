@@ -31,10 +31,10 @@
           <tr *ngFor="let empl of this.employees">
             <td>
               <div class="d-flex">
-                <a>
+                <a [routerLink]="'/'+empl._id+'/edit'">
                   <img src="../../assets/img/edit.png" width="30">
                 </a>
-                <a>
+                <a [routerLink]="'/'+empl._id+ '/delete'">
                   <img src="../../assets/img/delete.png" width="30">
                 </a>
               </div>
