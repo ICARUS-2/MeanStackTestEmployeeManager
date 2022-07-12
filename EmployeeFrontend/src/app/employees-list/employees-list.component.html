@@ -50,7 +50,7 @@
             <td><span class="badge" [ngClass]="{'bg-success': empl.status == 'Active', 'bg-warning' : empl.status == 'On Leave', 'bg-danger' : empl.status == 'Terminated'}">{{empl.status}}</span></td>
             <td>{{empl.info}}</td>
             <td *ngIf="empl.status != 'Terminated'; else elseTerminated">
-              <app-terminate-form [employeeId]="empl._id"></app-terminate-form>
+              <app-terminate-form [employeeId]="empl._id" (refreshEmployeeList)="refreshList()"></app-terminate-form>
             </td>
             <ng-template #elseTerminated><td>-</td></ng-template>
           </tr>

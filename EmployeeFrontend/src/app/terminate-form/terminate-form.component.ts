@@ -1,5 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
 import NotificationModel from 'src/models/NotificationModel';
+import { EventEmitter } from '@angular/core';
 import { EmployeeService } from './../services/employee.service';
 import { NotificationService } from './../services/notification.service';
 
@@ -12,6 +13,8 @@ export class TerminateFormComponent implements OnInit {
 
   @Input() employeeId: string = "";
   reason: string = "";
+
+  @Output() refreshEmployeeList = new EventEmitter();
 
   constructor(private employeeService: EmployeeService, private notificationService: NotificationService) { }
 
@@ -33,6 +36,8 @@ export class TerminateFormComponent implements OnInit {
         {
           console.log("Succeeded")
           this.notificationService.addNotification(new NotificationModel(NotificationModel.TYPES.success, "Successfully terminated employee."))
+
+          this.refreshParentList();
         },
         error: (err) =>
         {
@@ -41,5 +46,10 @@ export class TerminateFormComponent implements OnInit {
         }
       } 
     )
+  }
+
+  refreshParentList()
+  {
+    this.refreshEmployeeList.emit();
   }
 }
